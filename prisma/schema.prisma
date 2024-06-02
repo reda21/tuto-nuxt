@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id             Int              @id @default(autoincrement())
+  uuid           String           @unique(map: "uuid") @db.VarChar(60)
+  email          String           @unique(map: "email") @db.VarChar(255)
+  password       String           @db.VarChar(255)
+  avatar         String?          @db.VarChar(1000)
+  permissions    String?          @db.VarChar(4000)
+  first_name     String           @db.VarChar(255)
+  last_name      String           @db.VarChar(255)
+  role           Role             @default(GENERAL)
+  email_verified Boolean          @default(false)
+  is_active      Boolean          @default(true)
+  last_login     DateTime?        @db.DateTime(0)
+  created_at     DateTime         @default(now()) @db.DateTime(0)
+  deleted_at     DateTime?        @db.DateTime(0)
+  updated_at     DateTime?        @updatedAt
+  provider_users provider_users[]
+  refresh_tokens refresh_tokens[]
+  sessions       sessions[]
+}
+
+model provider_users {
+  id               Int       @id @default(autoincrement())
+  provider         Provider
+  provider_user_id String    @unique(map: "provider_user_id")
+  user_id          Int
+  updated_at       DateTime? @updatedAt
+  user             users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id], map: "provider_users_user_id_fkey")
+}
+
+model sessions {
+  id           Int       @id @default(autoincrement())
+  user_id      Int
+  sid          String    @unique(map: "sid")
+  start_time   DateTime  @default(now())
+  end_time     DateTime?
+  access_token String    @db.VarChar(4000)
+  csrf_token   String    @db.VarChar(255)
+  is_active    Boolean
+  ip_address   String
+  updated_at   DateTime? @updatedAt
+  user         users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id], map: "sessions_user_id_fkey")
+}
+
+model refresh_tokens {
+  id           Int       @id @default(autoincrement())
+  token_id     String    @unique(map: "token_id") @db.VarChar(60)
+  user_id      Int
+  is_active    Boolean
+  date_created DateTime  @default(now()) @db.DateTime(0)
+  updated_at   DateTime? @updatedAt
+  user         users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id], map: "refresh_tokens_user_id_fkey")
+}
+
+model one_time_tokens {
+  id           Int        @id @default(autoincrement())
+  token_id     String     @unique(map: "token_id") @db.VarChar(60)
+  token_type   tokenType?
+  expires_at   DateTime   @db.DateTime(0)
+  date_created DateTime   @default(now()) @db.DateTime(0)
+  updated_at   DateTime?  @updatedAt
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  GENERAL
+}
+
+enum Provider {
+  GOOGLE
+}
+
+enum tokenType {
+  RESET
+}

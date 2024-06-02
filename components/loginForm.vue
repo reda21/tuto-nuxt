@@ -14,9 +14,9 @@
         <NxCard :maxWidth="50" header="Login" text="Login using Google or your email address and password"
             class="login-card">
             <NxForm @submit="loginUser">
-                <NxINput name="name" v-model="inputs.name" />
-                <NxINput type="email" name="email" v-model="inputs.email" />
-                <NxINput type="password" error="mode de passe error" name="password" v-model="inputs.password" />
+                <NxINput name="name" :error="errors.get('name')" v-model="inputs.name" />
+                <NxINput type="email" :error="errors.get('email')" name="email" v-model="inputs.email" />
+                <NxINput type="password" :error="errors.get('password')" name="password" v-model="inputs.password" />
                 <NxButton theme="success">Login</NxButton>
                 <p>{{ inputs }}</p>
             </NxForm>
@@ -31,9 +31,15 @@ import NxForm from './nx/form/NxForm.vue';
 import NxINput from "./nx/form/NxINput.vue"
 import NxButton from './nx/NxButton.vue';
 
+import { customError } from "../libs/customError"
+import { errorRequestResponse } from "../libs/errorRequestResponse"
+import { LoginSchema } from "../schema/login"
+
 // Error variable
 const loginError = ref(<Error | null>null);
 const loginSuccess = ref(false);
+
+const errors = new customError();
 
 //data
 const inputs = reactive({
@@ -44,6 +50,15 @@ const inputs = reactive({
 
 // Login function
 const loginUser = async () => {
-    console.info('submited')
+    loginSuccess.value = false
+    console.info('submited');
+    const validation = LoginSchema.safeParse(inputs);
+
+    if (!validation.success) {
+        errors.setAll(errorRequestResponse(validation.error).errors);
+    } else {
+        loginSuccess.value = true
+    }
+
 }
 </script>

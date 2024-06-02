@@ -1,4 +1,4 @@
-<script setup lang="ts">
+  ²<script setup lang="ts">
 import Navbar from './components/Navbar.vue'
 
 const router = useRouter()

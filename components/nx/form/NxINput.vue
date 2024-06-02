@@ -1,10 +1,10 @@
 <template>
-  <div>
-      <label for="email" class="form-label">
-          <strong>Email</strong>
-      </label>
-      <input :type="props.name" class="form-control mb-3" :id="name" v-model="model" />
-      <div v-if="shouldDisplayError" class="text-danger">{{ errorMessage }}</div>
+  <div class="mb-3">
+    <label for="email" class="form-label">
+      <strong>Email</strong>
+    </label>
+    <input :type="props.name" class="form-control" :id="name" v-model="model" />
+    <div v-if="shouldDisplayError" class="text-danger">{{ errorMessage }}</div>
   </div>
 </template>
 
@@ -21,9 +21,12 @@ const props = withDefaults(defineProps<Props>(), {
   type: "text"
 });
 
-const shouldDisplayError = computed(() => Boolean(props.error && (typeof props.error === "string" || (Array.isArray(props.error) && props.error.length > 0))));
+const shouldDisplayError = computed(() => {
+  console.info("shouldDisplayError", props.error, typeof props.error)
+  return Boolean(props.error && (typeof props.error === "string" || (Array.isArray(props.error) && props.error.length > 0)))
+});
 
-const errorMessage = computed(() => props.error?.[0] ?? props.error as string);
+const errorMessage = computed(() => (props && props.error) ? (Array.isArray(props.error) ? props.error[0] : props.error) : null);
 </script>
 
 <style scoped>
@@ -50,5 +53,9 @@ select {
 input:disabled,
 select:disabled {
   background-color: #eee;
+}
+
+.text-danger {
+  color: #dc3545;
 }
 </style>

@@ -1,25 +1,45 @@
 <template>
   <div class="mb-3">
-    <label for="email" class="form-label">
-      <strong>Email</strong>
+    <label :for="name" class="form-label">
+      <strong>{{ name }}</strong>
     </label>
-    <input :type="props.name" class="form-control" :id="name" v-model="model" />
+    <input  :type="name" @focus="handleFocus"  class="form-control" :id="name" v-model="model" />
     <div v-if="shouldDisplayError" class="text-danger">{{ errorMessage }}</div>
+    
   </div>
 </template>
 
 <script setup lang="ts">
+import type { InputType } from "../../../types/formTypes"
+
+//@focus="() => emit('change', name)"
+
+//get model
 const model = defineModel()
 
+//props
 interface Props {
   name: string;
-  type?: 'text' | 'email' | 'number' | 'password';
+  type?: InputType;
   error?: string | string[] | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   type: "text"
 });
+
+//emit
+const emit = defineEmits<{
+  (e: 'change', name: string): void;
+  (e: 'focus'): void;
+}>();
+
+
+//methods
+// Handle focus event
+const handleFocus = () => {
+  emit('change', props.name);
+};
 
 const shouldDisplayError = computed(() => {
   console.info("shouldDisplayError", props.error, typeof props.error)

@@ -14,9 +14,10 @@
         <NxCard :maxWidth="50" header="Login" text="Login using Google or your email address and password"
             class="login-card">
             <NxForm @submit="loginUser">
-                <NxINput name="name" :error="errors.get('name')" v-model="inputs.name" />
-                <NxINput type="email" :error="errors.get('email')" name="email" v-model="inputs.email" />
-                <NxINput type="password" :error="errors.get('password')" name="password" v-model="inputs.password" />
+                <NxINput @change="clearError" label="Email" type="email" :error="errors.get('email')" name="email"
+                    v-model="inputs.email" />
+                <NxINput @change="clearError" label="mot de passe" type="password" :error="errors.get('password')"
+                    name="password" v-model="inputs.password" />
                 <NxButton theme="success">Login</NxButton>
                 <p>{{ inputs }}</p>
             </NxForm>
@@ -35,6 +36,9 @@ import { customError } from "../libs/customError"
 import { errorRequestResponse } from "../libs/errorRequestResponse"
 import { LoginSchema } from "../schema/login"
 
+//composables
+const { login } = useIam();
+
 // Error variable
 const loginError = ref(<Error | null>null);
 const loginSuccess = ref(false);
@@ -43,13 +47,14 @@ const errors = new customError();
 
 //data
 const inputs = reactive({
-    name: "hello reda",
-    email: "",
-    password: ""
+    email: "reg6K@example.com",
+    password: "password"
 })
 
 // Login function
 const loginUser = async () => {
+    errors.clearAll();
+
     loginSuccess.value = false
     console.info('submited');
     const validation = LoginSchema.safeParse(inputs);
@@ -58,7 +63,12 @@ const loginUser = async () => {
         errors.setAll(errorRequestResponse(validation.error).errors);
     } else {
         loginSuccess.value = true
+        const response = await login(inputs);
+        console.info("response", response);
     }
+}
 
+const clearError = (name: string) => {
+    errors.clear(name)
 }
 </script>

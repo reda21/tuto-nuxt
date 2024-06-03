@@ -35,3 +35,24 @@ export async function hashPassword(
 export function makeUuid(): string {
     return uuidv4();
   }
+
+  /**
+ * @desc Verifies password against a hash
+ * @param hash Hashed password
+ * @param password Unhashed password
+ */
+export async function verifyPassword(
+  hash: string,
+  password: string
+): Promise<boolean> {
+  try {
+    if (await argon2.verify(hash, password)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}

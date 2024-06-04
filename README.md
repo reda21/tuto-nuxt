@@ -76,3 +76,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 # https://github.com/jeremycoder/nuxt-iam
 https://github.com/jeremycoder/nuxt-iam
+https://nuxt-auth-example.sidebase.io/
+https://github.com/t3-oss/create-t3-turbo/tree/main

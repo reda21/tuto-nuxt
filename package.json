@@ -3,6 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "db-generate": "prisma generate",
+    "prisma-studio": "prisma studio",
+    "db-seed": "prisma db seed",
+    "db-reset": "prisma migrate dev reset",
+    "dx:next": "run-s migrate-dev db-seed && next dev",
+    "dx:prisma-studio": "pnpm prisma-studio",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

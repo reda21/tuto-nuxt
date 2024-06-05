@@ -3,6 +3,7 @@ import extendRoutes from "./modules/extend-routes";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  plugins: ["~/plugins/hello.ts"],
   modules: [
     "@nuxt/content",
     "@nuxtjs/tailwindcss",

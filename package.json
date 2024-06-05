@@ -3,6 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "db-generate": "prisma generate",
+    "prisma-studio": "prisma studio",
+    "db-seed": "prisma db seed",
+    "db-reset": "prisma migrate dev reset",
+    "dx:next": "run-s migrate-dev db-seed && next dev",
+    "dx:prisma-studio": "pnpm prisma-studio",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -37,6 +43,9 @@
     "packageManagerStrict": false
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.0"
+    "@nuxtjs/device": "^3.1.1",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@sidebase/nuxt-session": "^0.2.8",
+    "vue-gtag-next": "^1.14.0"
   }
 }

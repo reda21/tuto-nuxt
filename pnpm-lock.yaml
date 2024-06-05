@@ -75,9 +75,18 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@nuxtjs/device':
+        specifier: ^3.1.1
+        version: 3.1.1(rollup@4.18.0)
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.0
         version: 6.12.0(rollup@4.18.0)
+      '@sidebase/nuxt-session':
+        specifier: ^0.2.8
+        version: 0.2.8(encoding@0.1.13)(ioredis@5.4.1)(rollup@4.18.0)
+      vue-gtag-next:
+        specifier: ^1.14.0
+        version: 1.14.0(vue@3.4.27)
 
 packages:
 
@@ -599,6 +608,9 @@ packages:
     peerDependencies:
       vue: ^3.3.4
 
+  '@nuxtjs/device@3.1.1':
+    resolution: {integrity: sha512-wHTziEevt1hdgePQwPhEedWW3COalhP0YGVB+sGLqSrKujX8vdz7lcBFB01KIftpaP8kY5H8pssibNaJbxGcYw==}
+
   '@nuxtjs/mdc@0.6.1':
     resolution: {integrity: sha512-zS5QK7DZ/SBrjqQX1DOy7GnxKy+wbj2+LvooefOWmQqHfLTAqJLVIjuv/BmKnQWiRCq19+uysys3iY42EoY5/A==}
 
@@ -972,6 +984,9 @@ packages:
 
   '@shikijs/transformers@1.6.0':
     resolution: {integrity: sha512-qGfHe1ECiqfE2STPWvfogIj/9Q0SK+MCRJdoITkW7AmFuB7DmbFnBT2US84+zklJOB51MzNO8RUXZiauWssJlQ==}
+
+  '@sidebase/nuxt-session@0.2.8':
+    resolution: {integrity: sha512-fgcF21Vro0zd0NSjiWTYoeUnrFVg5xudoMV1qQCAANqKR0LCNnS/4P6i8bMc1iK7f4fIoVrHDYP2Iu2mitj/oQ==}
 
   '@sigstore/bundle@2.3.2':
     resolution: {integrity: sha512-wueKWDk70QixNLB363yHc2D2ItTgYiMTdPwK8D9dKQMR3ZQ0c35IxP5xnwQ8cNLoCgCRcHf14kE+CLIvNX1zmA==}
@@ -1425,6 +1440,10 @@ packages:
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
 
+  argon2@0.30.3:
+    resolution: {integrity: sha512-DoH/kv8c9127ueJSBxAVJXinW9+EuPA3EMUxoV2sAY1qDE5H9BjTyVF/aD2XyHqbqUWabgBkIfcP3ZZuGhbJdg==}
+    engines: {node: '>=14.0.0'}
+
   argon2@0.40.3:
     resolution: {integrity: sha512-FrSmz4VeM91jwFvvjsQv9GYp6o/kARWoYKjbjDB2U5io1H3e5X67PYGclFDeQff6UXIhUd4aHR3mxCdBbMMuQw==}
     engines: {node: '>=16.17.0'}
@@ -1838,9 +1857,8 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  dashdash@1.14.1:
-    resolution: {integrity: sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g==}
-    engines: {node: '>=0.10'}
+  dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
 
   db0@0.1.4:
     resolution: {integrity: sha512-Ft6eCwONYxlwLjBXSJxw0t0RYtA5gW9mq8JfBXn9TtC0nDPlqePAhpv9v4g9aONBi6JI1OXHTKKkUYGd+BOrCA==}
@@ -3139,6 +3157,9 @@ packages:
     peerDependenciesMeta:
       xml2js:
         optional: true
+
+  node-addon-api@5.1.0:
+    resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
 
   node-addon-api@7.1.0:
     resolution: {integrity: sha512-mNcltoe1R8o7STTegSOHdnJNN7s5EUvhoS7ShnTHDyOSd+8H+UdWODq6qSv67PjC8Zc5JRT8+oLAMCr0SIXw7g==}
@@ -4544,6 +4565,11 @@ packages:
   vue-devtools-stub@0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==}
 
+  vue-gtag-next@1.14.0:
+    resolution: {integrity: sha512-iJl+cOG2GU5NuxqzSSIpt03WVOvZqyKB9TOy7d55KiuvRklcnb2nlqxW5B/a3/sbIt7fla+XEkRyMCcoz0zAHw==}
+    peerDependencies:
+      vue: ^3.0.0-rc.11
+
   vue-observe-visibility@2.0.0-alpha.1:
     resolution: {integrity: sha512-flFbp/gs9pZniXR6fans8smv1kDScJ8RS7rEpMjhVabiKeq7Qz3D9+eGsypncjfIyyU84saU88XZ0zjbD6Gq/g==}
     peerDependencies:
@@ -5484,6 +5510,14 @@ snapshots:
       - vti
       - vue-tsc
 
+  '@nuxtjs/device@3.1.1(rollup@4.18.0)':
+    dependencies:
+      '@nuxt/kit': 3.11.2(rollup@4.18.0)
+      defu: 6.1.4
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+
   '@nuxtjs/mdc@0.6.1(rollup@4.18.0)':
     dependencies:
       '@nuxt/kit': 3.11.2(rollup@4.18.0)
@@ -5862,6 +5896,33 @@ snapshots:
   '@shikijs/transformers@1.6.0':
     dependencies:
       shiki: 1.6.0
+
+  '@sidebase/nuxt-session@0.2.8(encoding@0.1.13)(ioredis@5.4.1)(rollup@4.18.0)':
+    dependencies:
+      '@nuxt/kit': 3.11.2(rollup@4.18.0)
+      argon2: 0.30.3(encoding@0.1.13)
+      dayjs: 1.11.11
+      defu: 6.1.4
+      h3: 1.11.1
+      unstorage: 1.10.2(ioredis@5.4.1)
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - encoding
+      - idb-keyval
+      - ioredis
+      - rollup
+      - supports-color
+      - uWebSockets.js
 
   '@sigstore/bundle@2.3.2':
     dependencies:
@@ -6506,6 +6567,15 @@ snapshots:
 
   arg@5.0.2: {}
 
+  argon2@0.30.3(encoding@0.1.13):
+    dependencies:
+      '@mapbox/node-pre-gyp': 1.0.11(encoding@0.1.13)
+      '@phc/format': 1.0.0
+      node-addon-api: 5.1.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
   argon2@0.40.3:
     dependencies:
       '@phc/format': 1.0.0
@@ -6931,9 +7001,7 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  dashdash@1.14.1:
-    dependencies:
-      assert-plus: 1.0.0
+  dayjs@1.11.11: {}
 
   db0@0.1.4: {}
 
@@ -8505,6 +8573,8 @@ snapshots:
       - idb-keyval
       - supports-color
       - uWebSockets.js
+
+  node-addon-api@5.1.0: {}
 
   node-addon-api@7.1.0: {}
 
@@ -10216,6 +10286,10 @@ snapshots:
       vue: 3.4.27
 
   vue-devtools-stub@0.1.0: {}
+
+  vue-gtag-next@1.14.0(vue@3.4.27):
+    dependencies:
+      vue: 3.4.27
 
   vue-observe-visibility@2.0.0-alpha.1(vue@3.4.27):
     dependencies:

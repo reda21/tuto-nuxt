@@ -6,6 +6,7 @@ export default defineNuxtModule({
   setup(_, nuxt) {
     nuxt.hook('pages:extend', (routes) => {
  //     console.info("extendRoutes", routes);
+   //   console.info("extendRoutes", routes);
       routes.push({
         name: 'custom-route',
         path: '/custom-route',

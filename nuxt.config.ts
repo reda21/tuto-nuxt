@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     '@nuxtjs/device',
+    '@sidebase/nuxt-session',
     extendRoutes,
   ],
   router: {},

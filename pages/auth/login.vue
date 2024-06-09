@@ -1,10 +1,25 @@
+<script setup lang="ts">
+// file: e.g ~/pages/login.vue
+const { status, data, signIn, signOut } = useAuth()
+
+console.info("status", signIn)
+
+const login = async () =>{
+    await signIn('credentials', { username: 'jsmith', password: 'hunter2' })
+}
+
+const login2 = async () =>{
+    await signIn("github")
+}
+</script>
+
 <template>
-    <div>
-        <LoginForm />
+    <div>     
+        {{ data }}  
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <div class="tester-unit a">A</div>
-            <div class="tester-unit b">B</div>
-            <div class="tester-unit c">C</div>
+            <div @click="login" class="tester-unit a cursor-pointer">A</div>
+            <div @click="login2" class="tester-unit b cursor-pointer">B</div>
+            <div @click="async () => await signOut()" class="tester-unit c cursor-pointer">C</div>
         </div>
     </div>
 </template>

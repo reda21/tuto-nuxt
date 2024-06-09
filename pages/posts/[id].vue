@@ -11,7 +11,7 @@ const { data, pending, error } = await useAsyncData(
 watchEffect(() => {
   if (data.value) {
     useHead({
-      title: data.value.title
+      title: data.value?.title
     })
   }
 })

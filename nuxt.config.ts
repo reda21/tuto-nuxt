@@ -8,10 +8,16 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
-    '@nuxtjs/device',
-    '@sidebase/nuxt-session',
+    "@nuxtjs/device",
+    "@sidebase/nuxt-session",
+    "@sidebase/nuxt-auth",
     extendRoutes,
   ],
+  auth: {
+    provider: {
+      type: "authjs",
+    },
+  },
   router: {},
   runtimeConfig: {
     // IAM token secrets. Please rotate every 2 - 4 weeks
@@ -48,6 +54,9 @@ export default defineNuxtConfig({
     public: {
       iamVerifyRegistrations: process.env.IAM_VERIFY_REGISTRATIONS,
       iamAllowGoogleAuth: process.env.IAM_ALLOW_GOOGLE_AUTH,
-    },
+    }, 
+    
+    githubId: process.env.GITHUB_ID,
+    githubSecret: process.env.GITHUB_SECRET,
   },
 });

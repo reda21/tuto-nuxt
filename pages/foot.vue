@@ -1,12 +1,11 @@
 <template>
   <div class="rss-feed">
-    <h1>Football News</h1>
+    <h1>{{ flux?.title }}</h1>
     <ul>
-      <li v-for="item in items" :key="item.guid">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.pubDate }}</p>
-        <div v-html="item.content"></div>
-        <a :href="item.link" target="_blank">Read more</a>
+      <li v-for="item in flux?.items" :key="item.guid">
+        <h2>item : {{ item.title }}</h2>
+        <div> {{ item['contentSnippet'] }}</div> 
+        <pre>{{ item }}  </pre>     
       </li>
     </ul>
   </div>
@@ -14,24 +13,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import Parser from 'rss-parser';
+import { getHihi2RSSDataAsJSON } from "~/libs/getRss";
+import type { Feed } from "~/types/foot";
 
-interface RssItem {
-  title: string;
-  pubDate: string;
-  content: string;
-  link: string;
-  guid: string;
-}
-
-const items = ref<RssItem[]>([]);
+const flux = ref<Feed | null>(null);
 
 onMounted(async () => {
-  const parser = new Parser();
-  const feed = await parser.parseURL('https://hihi2.com/category/football-news/feed');
-
-  console.info("feed", feed);
-  items.value = feed.items as RssItem[];
+  flux.value = await getHihi2RSSDataAsJSON("https://hihi2.com/category/football-news/feed");
 });
 </script>
 

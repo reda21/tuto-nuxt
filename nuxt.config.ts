@@ -54,9 +54,12 @@ export default defineNuxtConfig({
     public: {
       iamVerifyRegistrations: process.env.IAM_VERIFY_REGISTRATIONS,
       iamAllowGoogleAuth: process.env.IAM_ALLOW_GOOGLE_AUTH,
-    }, 
-    
+    },
+
     githubId: process.env.GITHUB_ID,
     githubSecret: process.env.GITHUB_SECRET,
+
+    googleId: process.env.GOOGLE_ID,
+    googleSecret: process.env.GOOGLE_SECRET,
   },
 });

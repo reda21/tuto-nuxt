@@ -32,8 +32,8 @@ import NxForm from './nx/form/NxForm.vue';
 import NxINput from "./nx/form/NxINput.vue"
 import NxButton from './nx/NxButton.vue';
 
-import { customError } from "../libs/customError"
-import { errorRequestResponse } from "../libs/errorRequestResponse"
+import { customError } from "../lib/customError"
+import { errorRequestResponse } from "../lib/errorRequestResponse"
 import { LoginSchema } from "../schema/login"
 
 //composables

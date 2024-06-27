@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getHihi2RSSDataAsJSON } from "~/libs/getRss";
+import { getHihi2RSSDataAsJSON } from "~/lib/getRss";
 import type { Feed } from "~/types/foot";
 
 const flux = ref<Feed | null>(null);

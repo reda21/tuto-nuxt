@@ -4,6 +4,9 @@ import extendRoutes from "./modules/extend-routes";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: ["~/plugins/hello.ts"],
+  buildModules: [
+    '@nuxt/typescript-build',
+  ],
   modules: [
     "@nuxt/content",
     "@nuxtjs/tailwindcss",

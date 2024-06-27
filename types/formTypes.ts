@@ -2,7 +2,7 @@ export type RecordType = Record<string, unknown>;
 export type ErrorType = Record<string, any | any[]>;
 import { InertiaForm } from "@inertiajs/vue3";
 import type { Ref } from "vue";
-import { customError } from "@/Services/customError";
+import { customError } from "@/lib/customError";
 
 export type FormModelType = {
     field: null | string;

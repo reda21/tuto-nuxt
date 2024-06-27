@@ -78,3 +78,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 https://github.com/jeremycoder/nuxt-iam
 https://nuxt-auth-example.sidebase.io/
 https://github.com/t3-oss/create-t3-turbo/tree/main
+https://flowbite.com/docs/components/chat-bubble/
+https://www.shadcn-vue.com/docs/installation/nuxt
+https://www.radix-vue.com/utilities/primitive
